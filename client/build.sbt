@@ -20,6 +20,4 @@ customCompile := {
   sbt.IO.listFiles(outputDir)
 }
 
-//Compile / sourceGenerators += customCompile
-
 (Compile / compile) := ((Compile / compile) dependsOn customCompile).value
