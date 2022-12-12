@@ -13,6 +13,3 @@ lazy val client = project
 lazy val server = project
   .in(file("server"))
   .settings(name := "server")
-
-watchSources <++= baseDirectory map { path => 
-    ((path / "js") ** "*.js").get }
