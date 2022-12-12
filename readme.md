@@ -14,3 +14,17 @@ The result is that we can add/edit/remove files in './client/js' and see them (n
 ```
 sbt "project client" ~compile
 ```
+
+# Testing / Demo
+
+To see this work, tell sbt to continuously compile the client:
+
+```
+sbt "project client" ~compile
+```
+
+Then just watch the build output (or resulting ./client/js-output directory) changes after making some source changes, e.g.:
+
+```
+echo 'testing' > ./client/js/test.js
+```

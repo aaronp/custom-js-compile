@@ -9,17 +9,17 @@ lazy val customCompile = taskKey[Seq[File]]("custom compile task")
 
 customCompile := {
   import sys.process._
+
+  // this is just manually kept in-step with our project structure
   val script = baseDirectory( _ / "build.sh").value
   val outputDir = baseDirectory( _ / "js-output").value
-  println(s"compiling using $script")
-  val out = script.getPath.!!
-  println("output:")
-  println(out)
-  val files = sbt.IO.listFiles(outputDir)
-  files
+  val compileOutput = script.getPath.!!
+  println(compileOutput)
+
+  //note: this isn't recursive - it just assumes a flat directory
+  sbt.IO.listFiles(outputDir)
 }
 
-Compile / sourceGenerators += customCompile
-
+//Compile / sourceGenerators += customCompile
 
 (Compile / compile) := ((Compile / compile) dependsOn customCompile).value
